@@ -15,29 +15,32 @@ import com.google.android.gms.maps.model.MarkerOptions
  * Use the [MapsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
+class MapsFragment : Fragment() {
 
     private lateinit var gmap: GoogleMap
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        //val view = inflater.inflate(R.layout.fragment_maps, container, false)
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-        getMapAsync(this)
-        return view
-    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
+    private val onMapReadyCallback = OnMapReadyCallback { googleMap ->
         gmap = googleMap
 
         val cacahoatan = LatLng( 14.990223, -92.167980 )
         val zoom = 17f
 
-        gmap.addMarker( MarkerOptions().position(cacahoatan))
+        gmap.addMarker( MarkerOptions().position(cacahoatan).title("Cacahoatán"))
         gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(cacahoatan, zoom))
     }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_maps, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapFragment?.getMapAsync( onMapReadyCallback )
+    }
+
 
 }
