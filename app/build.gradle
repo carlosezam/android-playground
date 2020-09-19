@@ -42,6 +42,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    implementation 'com.google.android.material:material:1.2.1'
+
     def nav_version = "2.3.0"
 
     // Kotlin
@@ -55,6 +57,8 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
 
+    //Recycler view, Adapterist
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
 
     // Google Maps and Location Services Api
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
