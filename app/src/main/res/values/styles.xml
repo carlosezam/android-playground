@@ -9,6 +9,8 @@
         <item name="chipStyle">@style/Widget.App.Chip</item>
 
         <item name="chipCategoriesStyle">@style/Widget.AppTheme.ChipCategories</item>
+        <item name="inputDatePickerStyle">@style/Widget.AppTheme.InputDatePicker</item>
+        <item name="inputDateDialogStyle">@style/Widget.AppTheme.InputDatePickerDialog</item>
     </style>
 
     <style name="Widget.App.Chip" parent="Widget.MaterialComponents.Chip.Choice">
@@ -24,5 +26,22 @@
 
         <item name="chipBackgroundColor">@color/colorWhite</item>
         <item name="android:elevation">2dp</item>
+    </style>
+
+    <!--ThemeOverlay.AppCompat.Dialog.Alert-->
+    <style name="Widget.AppTheme.InputDatePickerDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:datePickerStyle">@style/myspiner</item>
+    </style>
+
+    <style name="myspiner" parent="android:Widget.Material.DatePicker" >
+        <item name="android:datePickerMode">spinner</item>
+    </style>
+
+    <style name="Widget.AppTheme.InputDatePicker" parent="">
+        <item name="inputDateLayoutStyle">@style/Widget.AppTheme.InputDatePickerLayout</item>
+    </style>
+
+    <style name="Widget.AppTheme.InputDatePickerLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="startIconDrawable">@drawable/ic_baseline_today_24</item>
     </style>
 </resources>

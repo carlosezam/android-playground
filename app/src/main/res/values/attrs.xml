@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AppTheme">
-        <attr name="chipCategoriesStyle" format="reference"></attr>
+        <attr name="chipCategoriesStyle" format="reference" />
+        <attr name="inputDatePickerStyle" format="reference" />
+    </declare-styleable>
+    
+    <declare-styleable name="InputDatePicker" >
+        <attr name="inputDateLayoutStyle" format="reference" />
+        <attr name="inputDateDialogStyle" format="reference" />
     </declare-styleable>
 </resources>
