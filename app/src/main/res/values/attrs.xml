@@ -8,5 +8,7 @@
     <declare-styleable name="InputDatePicker" >
         <attr name="inputDateLayoutStyle" format="reference" />
         <attr name="inputDateDialogStyle" format="reference" />
+        <attr name="date" format="string"/>
+        <attr name="format" format="string"/>
     </declare-styleable>
 </resources>
