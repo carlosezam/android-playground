@@ -12,6 +12,6 @@
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/formFragment"
-        android:name="com.ezam.playground.ui.FormFragment"
+        android:name="com.ezam.playground.ui.form.FormFragment"
         android:label="FormFragment" />
 </navigation>
