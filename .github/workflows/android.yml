@@ -30,6 +30,7 @@ jobs:
       env:
         KEYSTORE: ${{ secrets.KEYSTORE }}
       run: echo $KEYSTORE | base64 -di > release.keystore
+
       
     - name: Build with Gradle
       run: ./gradlew app:assembleRelease
