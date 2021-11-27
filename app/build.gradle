@@ -6,15 +6,17 @@ apply from: "${project.rootDir}/jacoco.gradle"
 
 android {
 
-    File localProperties = rootProject.file("local.properties")
+    Properties properties =new Properties()
 
-    Properties properties = localProperties.exists() ? new Properties() : null
-    properties?.load( localProperties.newDataInputStream() )
+    if( rootProject.file("local.properties").exists() ) {
+        properties.load( rootProject.file("local.properties").newDataInputStream() )
+    }
 
     signingConfigs {
-
         release {
-            storeFile file( getPropOrEnv("STORE_FILE", properties) )
+            if( getPropOrEnv("STORE_FILE", properties) ) {
+                storeFile file( getPropOrEnv("STORE_FILE", properties) )
+            }
             storePassword getPropOrEnv("STORE_PASSWORD", properties)
             keyAlias getPropOrEnv("KEY_ALIAS", properties)
             keyPassword getPropOrEnv("KEY_PASSWORD", properties)
