@@ -37,7 +37,7 @@ jobs:
       env:
         STORE_FILE: ../release.keystore
         STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWD }}
-        KEY_ALIAS: ${{ secrects.KEYSTORE_ALIAS }}
+        KEY_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
         KEY_PASSWORD: ${{ secrets.KEYENTRY_PASSWD }}
 
     - name: Upload
