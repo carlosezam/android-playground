@@ -5,6 +5,23 @@ apply plugin: 'jacoco'
 apply from: "${project.rootDir}/jacoco.gradle"
 
 android {
+
+    File localProperties = rootProject.file("local.properties")
+
+    Properties properties = localProperties.exists() ? new Properties() : null
+    properties?.load( localProperties.newDataInputStream() )
+
+    signingConfigs {
+
+        release {
+            storeFile file( getPropOrEnv("STORE_FILE", properties) )
+            storePassword getPropOrEnv("STORE_PASSWORD", properties)
+            keyAlias getPropOrEnv("KEY_ALIAS", properties)
+            keyPassword getPropOrEnv("KEY_PASSWORD", properties)
+        }
+    }
+
+
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -17,18 +34,16 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        Properties properties = new Properties()
-        if( rootProject.file("local.properties").exists()){
-            properties.load(rootProject.file("local.properties").newDataInputStream())
-        }
-
         manifestPlaceholders = [
                 mapsApiKey : properties.getProperty("MAPS_API_KEY","")
         ]
     }
 
+
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -90,4 +105,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
     implementation( project(path: ":NetworkResponseAdapter"))
+}
+
+static def getPropOrEnv(String entry, Properties properties = null){
+    return properties?.getProperty(entry, "") ?: System.getenv( entry )
 }

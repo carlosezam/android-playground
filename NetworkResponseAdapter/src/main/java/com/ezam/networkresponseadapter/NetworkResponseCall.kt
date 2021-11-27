@@ -53,10 +53,4 @@ class NetworkResponseCall<S, E : Any>(
     /** The original HTTP request.  */
     override fun request(): Request = mCall.request()
 
-    /**
-     * Returns a timeout that spans the entire call: resolving DNS, connecting, writing the request
-     * body, server processing, and reading the response body. If the call requires redirects or
-     * retries all must complete within one timeout period.
-     */
-    override fun timeout(): Timeout = mCall.timeout()
 }
