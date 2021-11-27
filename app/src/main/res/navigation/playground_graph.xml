@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/playground_graph"
-    app:startDestination="@id/formFragment">
+    app:startDestination="@id/nestedScrollFragment">
 
     <fragment
         android:id="@+id/mapsFragment"
@@ -14,4 +14,9 @@
         android:id="@+id/formFragment"
         android:name="com.ezam.playground.ui.form.FormFragment"
         android:label="FormFragment" />
+    <fragment
+        android:id="@+id/nestedScrollFragment"
+        android:name="com.ezam.playground.NestedScrollFragment"
+        android:label="fragment_nested_scroll"
+        tools:layout="@layout/fragment_nested_scroll" />
 </navigation>
